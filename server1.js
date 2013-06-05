@@ -17,6 +17,8 @@ var app,server;
 
 function create_server(done){
     var app = express()
+              .use(express.favicon('favicon.ico'))
+              .use(express.logger({buffer:5000}))
               .use(express.cookieParser('barley Waterloo Napoleon'))
               .use(express.session({ store: new RedisStore }))
               .use(cas_validate.ticket({'cas_host':cas_host}))

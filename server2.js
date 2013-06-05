@@ -17,12 +17,19 @@ var app,server;
 
 function create_server(done){
     var app = express()
+              .use(express.favicon())
+              .use(express.logger({buffer:5000}))
               .use(express.cookieParser('barley Waterloo Napoleon'))
               .use(express.session({ store: new RedisStore }))
-              .use(cas_validate.ticket({'cas_host':cas_host}))
-              .use(cas_validate.ssoff())
-              .use(cas_validate.check_or_redirect({'cas_host':cas_host}))
-              .use(function(req, res, next){
+              .use('/',cas_validate.ssoff())
+              .use('/',cas_validate.ticket({'cas_host':cas_host}))
+
+    
+                                           //,'service':'http://'+testhost+':'+testport}))
+              .use('/',cas_validate.check_or_redirect({'cas_host':cas_host
+                                                  ,'service':'http://'+testhost+':'+testport}))
+
+              .use('/',function(req, res, next){
                   res.end('hello world')
                   return null
               });
