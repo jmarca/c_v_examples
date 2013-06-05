@@ -1,0 +1,18 @@
+{
+  "name": "c_v_examples",
+  "version": "0.0.0",
+  "description": "example app for cas_validate",
+  "main": "server1.js",
+  "dependencies": {
+    "express": "~3.2.6",
+    "connect-redis": "~1.4.5",
+    "cas_validate": "~0.0.15"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "James E. Marca",
+  "license": "GPL v2"
+}
